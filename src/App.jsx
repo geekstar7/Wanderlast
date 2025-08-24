@@ -1,12 +1,19 @@
+import AboutUs from "./components/AboutUs";
+import Testimonials from "./components/Testimonials";
+import Packages from "./components/Packages";
+import Gallery from "./components/Gallery";
+import FAQ from "./components/FAQ";
+
 function App() {
   return (
-    <div className="text-center p-6">
-      <h1 className="text-3xl font-bold text-blue-600">
-        Hello Wanderlast 🚀
-      </h1>
-      <p className="text-gray-600 mt-2">Your app is running!</p>
-    </div>
-  )
+    <>
+      <AboutUs />
+      <Testimonials />
+      <Packages />
+      <Gallery />
+      <FAQ />
+    </>
+  );
 }
 
-export default App
+export default App;
