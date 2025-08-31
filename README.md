@@ -2,7 +2,7 @@
 
 Wanderlust is a dynamic web application that helps users discover travel destinations and attractions worldwide. It integrates with the **OpenTripMap API** to provide real-time information about cities, points of interest, and attractions, complete with images and details.  
 
-**🌐 Live Demo:** [https://wanderlast-alpha.vercel.app/](https://your-vercel-app.vercel.app)
+**🌐 Live Demo:** [https://wanderlast-alpha.vercel.app](https://your-vercel-app.vercel.app)
 
 ---
 
