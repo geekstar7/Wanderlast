@@ -23,7 +23,7 @@ Wanderlust is a dynamic web application that helps users discover travel destina
 - **Styling:** Tailwind CSS  
 - **State Management:** React Hooks (`useState`, `useEffect`)  
 - **Data Fetching:** Axios, React Query  
-- **API:** [OpenTripMap API](https://opentripmap.io/)  failed(working on it)
+- **API:** [OpenTripMap API](https://opentripmap.io/)  FAILED (working on it)
 - **Routing:** React Router DOM  
 - **Components:** Custom UI components, Radix UI  
 
