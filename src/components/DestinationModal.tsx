@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Destination } from "@/data/destinations";
 import { useFavorites } from "@/hooks/useFavorites";
-import { toast } from "@/components/ui/use-toast";
+import { toast } from "@/hooks/use-toast";
 import BookingDialog from "./BookingDialog";
 import TripPlannerDialog from "./TripPlannerDialog";
 import { cn } from "@/lib/utils";

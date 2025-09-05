@@ -3,12 +3,15 @@ import DestinationCard from "./DestinationCard";
 import FilterTabs, { FilterCategory } from "./FilterTabs";
 import SortDropdown, { SortOption } from "./SortDropdown";
 import DestinationModal from "./DestinationModal";
-import { destinations, Destination } from "@/data/destinations";
+import { Destination } from "@/data/destinations";
+import { useDestinations } from "@/hooks/useDestinations";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const DestinationGrid = () => {
   const [activeFilter, setActiveFilter] = useState<FilterCategory>("All");
   const [currentSort, setCurrentSort] = useState<SortOption>("rating");
   const [selectedDestination, setSelectedDestination] = useState<Destination | null>(null);
+  const { data: destinations = [], isLoading, error } = useDestinations();
 
   const filteredAndSortedDestinations = useMemo(() => {
     let filtered = destinations.filter((destination) => {
@@ -33,7 +36,7 @@ const DestinationGrid = () => {
     });
 
     return filtered;
-  }, [activeFilter, currentSort]);
+  }, [destinations, activeFilter, currentSort]);
 
   const handleDestinationClick = (destination: Destination) => {
     setSelectedDestination(destination);
@@ -59,15 +62,31 @@ const DestinationGrid = () => {
         <SortDropdown currentSort={currentSort} onSortChange={setCurrentSort} />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {filteredAndSortedDestinations.map((destination) => (
-          <DestinationCard
-            key={destination.id}
-            destination={destination}
-            onClick={handleDestinationClick}
-          />
-        ))}
-      </div>
+      {isLoading ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {Array.from({ length: 8 }).map((_, i) => (
+            <div key={i} className="space-y-3">
+              <Skeleton className="h-48 w-full rounded-lg" />
+              <Skeleton className="h-4 w-3/4" />
+              <Skeleton className="h-4 w-1/2" />
+            </div>
+          ))}
+        </div>
+      ) : error ? (
+        <div className="text-center py-12">
+          <p className="text-muted-foreground">Failed to load destinations. Please try again later.</p>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {filteredAndSortedDestinations.map((destination) => (
+            <DestinationCard
+              key={destination.id}
+              destination={destination}
+              onClick={handleDestinationClick}
+            />
+          ))}
+        </div>
+      )}
 
       {selectedDestination && (
         <DestinationModal

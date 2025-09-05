@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { toast } from "@/components/ui/use-toast";
+import { toast } from "@/hooks/use-toast";
 
 export const useFavorites = () => {
   const [favorites, setFavorites] = useState<Set<string>>(new Set());
